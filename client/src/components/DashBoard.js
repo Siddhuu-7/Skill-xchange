@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import PostsCard from './PostsCrad';
+import Posts from './Posts'
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import { useNavigate } from 'react-router-dom';
-import nodataFound from '../assests/nosearchFound.png'
 export default function DashBoard() {
   const [PostData, setPostData] = useState([]);
   const [searchedData, setSearchedData] = useState('');
@@ -16,7 +16,7 @@ export default function DashBoard() {
     try {
       setIsLoading(true);
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/get-all-data/` + localStorage.getItem('Id'));
-      const filteredData = response.data.filter((post) => post.skills && post.skills.length > 0 && post.userName); // Filter out posts without skills or bio
+      const filteredData = response.data.filter((post) => post.skills && post.skills.length > 0 && post.userName); 
       setPostData(filteredData);
     } catch (error) {
       console.error('Error fetching data:', error.message);
@@ -54,7 +54,7 @@ export default function DashBoard() {
 
       
 
-      <div className="container" style={{ maxWidth: '1200px', marginTop: '160px', padding: '20px' }}>
+      {/* <div className="container" style={{ maxWidth: '1200px', marginTop: '160px', padding: '20px' }}>
  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
    {isLoading ? (
      Array.from({ length: 6 }).map((_, index) => (
@@ -88,6 +88,10 @@ export default function DashBoard() {
      )
    )}
  </div>
+</div> */}
+<div style={{paddingTop:"100px"}}>
+<Posts/>
+
 </div>
     </div>
   );

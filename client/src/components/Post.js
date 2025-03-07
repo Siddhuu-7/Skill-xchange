@@ -11,12 +11,14 @@ export default function CollabPosts({ post, isLoading }) {
   const [showComments, setShowComments] = useState(false); 
   const [commentText, setCommentText] = useState(''); 
   const [comments, setComments] = useState(post.comments || []); 
-  
+  const [like ,setLike]=useState(0)
   const toggleLike = (postId) => {
     setLiked((prev) => ({
       ...prev,
       [postId]: !prev[postId],
     }));
+    
+
   };
 
   const handleImageClick = (imageUrl) => {
@@ -37,7 +39,7 @@ export default function CollabPosts({ post, isLoading }) {
 
   const handlePostComment = () => {
     if (commentText.trim() !== '') {
-      setComments((prev) => [...prev, commentText]); 
+      setComments(commentText); 
       setCommentText(''); 
     }
   };

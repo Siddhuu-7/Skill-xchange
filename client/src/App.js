@@ -16,6 +16,7 @@ import ProfileUpdate from './components/profileUpdate';
 import FAQs from './components/Faqs';
 import PublicProfilePage from './components/PublicProfile';
 import CreatePost from './components/createPost'
+import SerachPage from './components/serachPage';
 export default function App() {
 
   const [initial,setIntial]=useState(false)
@@ -48,6 +49,7 @@ useEffect(()=>{
         <Route path='/faqs' element={<FAQs/>}/>
         <Route path='/publicprofile/:userId' element={<PublicProfilePage/>}/>
         <Route path='/createpost' element={<CreatePost/>}/>
+        <Route path='/SearchPage' element={<SerachPage/>}/>
       </Routes>
     </BrowserRouter>
   )

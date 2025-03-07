@@ -8,7 +8,7 @@ export default function Posts() {
   const navigate=useNavigate()
   return (
     
-      <div className="container my-1">
+      <div className="container my-1 ">
     <div className="card mb-2 shadow-sm" onClick={()=>navigate('/createpost')}>
       <div className="card-header bg-white d-flex align-items-center">
         <img

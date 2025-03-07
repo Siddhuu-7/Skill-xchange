@@ -60,7 +60,7 @@ const ProfilePage = () => {
 
       try {
         const response = await axios.get(
-          `https://backend-diwr.onrender.com/user/profileData/${id}`
+          `${process.env.REACT_APP_API_URL}/user/profileData/${id}`
         );
         setProfileData(response.data);
       } catch (err) {

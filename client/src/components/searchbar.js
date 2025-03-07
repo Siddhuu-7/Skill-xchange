@@ -1,16 +1,7 @@
-import React, { useState } from "react";
-import { Search, Filter, X } from "lucide-react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React,{useState} from "react";
+import { Search, Filter, ArrowLeft, X } from 'lucide-react';
 
-const debounce = (func, delay) => {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
-  };
-};
-
-export default function SearchBar({handelSearch}) {
+const SearchBar = ({ handelSearch }) => {
   const [searchContent, setSearchContent] = useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -27,16 +18,24 @@ export default function SearchBar({handelSearch}) {
     );
   };
 
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
+
   const handleSearchChange = debounce((value) => {
     setSearchContent(value);
   }, 300);
 
   return (
-    <div className="container py-3">
+    <div className="py-2 w-100">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handelSearch(searchContent)
+          handelSearch(searchContent);
         }}
       >
         <div className="d-flex align-items-center">
@@ -54,14 +53,14 @@ export default function SearchBar({handelSearch}) {
               onChange={(e) => handleSearchChange(e.target.value)}
             />
           </div>
-          {/* <button
+          <button
             type="button"
             className={`btn ms-2 ${showFilters ? "btn-primary" : "btn-outline-secondary"}`}
             onClick={() => setShowFilters(!showFilters)}
             aria-label="Toggle filters"
           >
             <Filter size={20} />
-          </button> */}
+          </button>
         </div>
       </form>
 
@@ -124,4 +123,5 @@ export default function SearchBar({handelSearch}) {
       </div>
     </div>
   );
-}
+};
+ export default SearchBar;

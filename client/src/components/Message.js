@@ -39,7 +39,7 @@ const ChatUI = () => {
 useEffect(()=>{
   const fetchMessages=async()=>{
 try {
-  const res=await axios.get(`${process.env.REACT_APP_API_URL}/get/messages?senderId=${localStorage.getItem('Id')}&receiverId=${id}`)
+  const res=await axios.get(`http://localhost:5001/get/messages?senderId=${localStorage.getItem('Id')}&receiverId=${id}`)
 if(res.data){
   setMessages(res.data)
 }

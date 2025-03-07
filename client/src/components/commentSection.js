@@ -1,15 +1,33 @@
 import React from 'react';
 import './CommentSection.css';
-import { Italic } from 'lucide-react';
+
+function CommentItem({ profilePic, username, text }) {
+  return (
+    <div className=" rounded-cricle comment-item d-flex align-items-center mb-2">
+      <img src={profilePic} alt={username} className="profile-pic me-2" />
+      <div>
+        <span className="fw-bold">{username}</span>
+        <span> {text}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function CommentSection({
   showComments,
-  comments,
   commentText,
   handleCommentChange,
   handlePostComment,
-  closeCommentSection, 
+  closeCommentSection,
 }) {
+  const staticComments = [
+    { username: "Alice", text: "Super good!", profilePic: "https://i.pravatar.cc/40?img=1" },
+    { username: "Bob", text: "Awesome!", profilePic: "https://i.pravatar.cc/40?img=2" },
+    { username: "Charlie", text: "Really helpful!", profilePic: "https://i.pravatar.cc/40?img=3" },
+    { username: "David", text: "Great work!", profilePic: "https://i.pravatar.cc/40?img=4" },
+    { username: "Eve", text: "Loved it!", profilePic: "https://i.pravatar.cc/40?img=5" }
+  ];
+
   return (
     showComments && (
       <div className="comment-section-wrapper">
@@ -22,14 +40,18 @@ export default function CommentSection({
             X
           </button>
 
-          {!comments.length ? (
-            <div className="no-comments-message fixed-bottom " style={{height:"35%", fontStyle:"italic"}}>No comments yet...</div>
+          {!staticComments.length ? (
+            <div className="no-comments-message fixed-bottom" style={{ height: "35%", fontStyle: "italic" }}>
+              No comments yet...
+            </div>
           ) : (
-            comments.map((comment, index) => (
-              <div key={index} className="comment-item">
-                <span className="fw-bold">User</span>
-                <span> {comment}</span>
-              </div>
+            staticComments.map((comment, index) => (
+              <CommentItem
+                key={index}
+                profilePic={comment.profilePic}
+                username={comment.username}
+                text={comment.text}
+              />
             ))
           )}
 

@@ -1,0 +1,25 @@
+{
+  "name": "skill-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm  start --prefix client",
+    "server": "npm run dev --prefix backend",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siddhuu-7/Skill-xchange.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siddhuu-7/Skill-xchange/issues"
+  },
+  "homepage": "https://github.com/Siddhuu-7/Skill-xchange#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

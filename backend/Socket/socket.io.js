@@ -11,7 +11,7 @@ class Socket{
         
 const io = new Server(this.server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.ALLOWORGIN,
     methods: ["GET", "POST"],
   },
 });

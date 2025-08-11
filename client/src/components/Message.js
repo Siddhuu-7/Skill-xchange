@@ -4,7 +4,7 @@ import { Camera, Phone, Video, Image, Send, MoreVertical } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import axios from 'axios';
-const socket = io('http://localhost:5000'); 
+const socket = io(process.env.REACT_APP_API_URL); 
 
 const ChatUI = () => {
   const { id ,userName} = useParams(); 
@@ -39,7 +39,7 @@ const ChatUI = () => {
 useEffect(()=>{
   const fetchMessages=async()=>{
 try {
-  const res=await axios.get(`http://localhost:5000/get/messages?senderId=${localStorage.getItem('Id')}&receiverId=${id}`)
+  const res=await axios.get(`${process.env.REACT_APP_API_URL}/get/messages?senderId=${localStorage.getItem('Id')}&receiverId=${id}`)
 if(res.data){
   setMessages(res.data)
 }

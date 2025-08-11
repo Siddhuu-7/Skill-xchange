@@ -18,9 +18,7 @@ const PORT=process.env.PORT
 app.use(cors({
     origin:"*"
 }))
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname,'../client/build','index.html')
-})
+
 const server=new Server(app,PORT)
 app.use('/user',userRoutes)
 app.use('',userResquest)

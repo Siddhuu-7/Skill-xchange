@@ -11,10 +11,16 @@ const createpost=require('./routes/createpost.route')
 const Server=require('./Socket/socket.io')
 const Message=require("./routes/message.route")
 app.use(express.json({ limit: '10mb' })); 
-app.use(express.urlencoded({ limit: '10mb', extended: true }));const PORT=process.env.PORT
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+const path=require("path")
+app.use(express.static(path.join(__dirname,'../client/build')))
+const PORT=process.env.PORT
 app.use(cors({
     origin:"*"
 }))
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname,'../client/build','index.html')
+})
 const server=new Server(app,PORT)
 app.use('/user',userRoutes)
 app.use('',userResquest)
